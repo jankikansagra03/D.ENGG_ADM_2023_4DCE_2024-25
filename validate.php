@@ -16,9 +16,11 @@
 </head>
 <script>
     $(document).ready(function() {
-        $.validator.addMethod("filesize", function(element, value, size1) {
-            return element.file[0].size<=size1;
-        }, "filesize cannot be greater than 250kb");
+        $.validator.addMethod("filesize", function(value, element, param) {
+            if (element.files[0]) {
+                return element.files[0].size <= param;
+            }
+        }, "filesize cannot be greater than {0} KB.");
         $('#form1').validate({
             rules: {
                 fn: {
@@ -46,7 +48,7 @@
                 f1: {
                     required: true,
                     accept: "image/*",
-                    filesize:250*1024
+                    filesize: 250 * 1024
                 },
                 cpswd: {
                     required: true,
