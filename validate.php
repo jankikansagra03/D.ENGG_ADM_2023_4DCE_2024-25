@@ -47,7 +47,7 @@
                 },
                 f1: {
                     required: true,
-                    accept: "image/*",
+                    accept: "image/jpg, image/png, image/jpeg",
                     filesize: 250 * 1024
                 },
                 cpswd: {
